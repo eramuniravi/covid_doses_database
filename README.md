@@ -2,13 +2,13 @@
 This will store the vaccination details of our citizens
 import sqlite3
  
-connection_obj = sqlite3.connect('covid19.database.db')
+    connection_obj = sqlite3.connect('covid19.database.db')
  
-cursor_obj = connection_obj.cursor()
+    cursor_obj = connection_obj.cursor()
 
-cursor_obj.execute("DROP TABLE IF EXISTS DATA")
+    cursor_obj.execute("DROP TABLE IF EXISTS DATA")
  
-table = """ CREATE TABLE covid19_vaccine (
+    table = """ CREATE TABLE covid19_vaccine (
             ADHAAR_NUMBER int UNIQUE NOT NULL,
             First_Name CHAR(25) NOT NULL,
             Last_Name char(10),
@@ -16,7 +16,7 @@ table = """ CREATE TABLE covid19_vaccine (
             Age int,
             Doses int
         ); """
-#cursor_obj.execute(table)  
+    #cursor_obj.execute(table)  
 
     while True:
     
@@ -36,8 +36,8 @@ table = """ CREATE TABLE covid19_vaccine (
         print("Enter the valid dose number")
         continue
 
-   sql = "insert into covid19_vaccine(Adhaar_number,First_name,Last_name,Age,phone_number,doses) values (?, ? ,? ,? ,? ,? );"
-   cursor_obj.execute(sql,(Adhaar_number,First_name,Last_name,Age,phone_number,doses))
+    sql = "insert into covid19_vaccine(Adhaar_number,First_name,Last_name,Age,phone_number,doses) values (?, ? ,? ,? ,? ,? );"
+    cursor_obj.execute(sql,(Adhaar_number,First_name,Last_name,Age,phone_number,doses))
     connection_obj.commit()
     data=cursor_obj.execute('''SELECT * FROM covid19_vaccine''')
     for row in data:
